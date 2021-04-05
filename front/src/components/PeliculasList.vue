@@ -1,49 +1,64 @@
 <template>
   <div id="app">
-    
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>LOLOLAA</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <div class="container">
+      <h1>Peliculas</h1>
+      <hr />
+      <p class="error" v-if="error">{{ error }}</p>
+
+      <div class="peliculas-cont">
+        <div
+          class="peliculas"
+          v-for="(pelicula, index) in peliculas"
+          v-bind:item="pelicula"
+          v-bind:index="index"
+          v-bind:key="pelicula.id"
+        >
+          
+          <div class="card" style="width: 18rem">
+            <img :src="`./src/assets/caratulas/${pelicula.id}.png`" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">{{ pelicula.titulo }}</h5>
+              <p class="card-text">
+                {{ pelicula.descripcion }}
+                <br>Duración: {{ pelicula.duracion }}
+                <br>Categorias: {{ pelicula.categorias}}
+                <br>Fecha de estreno: {{ pelicula.fecha2}}
+
+              </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import PeliculasService from '../PeliculasService'
+import PeliculasService from "../PeliculasService";
 export default {
-  name: 'PeliculasList',
-  data () {
+  name: "PeliculasList",
+  data() {
     return {
       peliculas: [],
-      error: '',
-      data: ''
+      error: "",
+      data: "",
+    };
+  },
+  async created() {
+    try {
+      this.peliculas = await PeliculasService.getPeliculas();
+      console.log(this.peliculas);
+    } catch (err) {
+      this.error = err.message;
     }
   },
-  async created(){
-    try{
-      this.peliculas = await PeliculasService.getPeliculas()
-    }
-    catch(err){
-
-    }
-  }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -51,7 +66,8 @@ export default {
   margin-top: 60px;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 

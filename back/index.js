@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 
 
 app.get('/peliculas', (request, response) => {
-  dbConn.query('SELECT * FROM peliculas', (error, result) => {
+  dbConn.query('SELECT *, DATE_FORMAT(estreno,'+"'"+'%d/%m/%Y'+"'"+') as fecha2 FROM peliculas', (error, result) => {
       if (error) throw error;
 
       response.send(result);
