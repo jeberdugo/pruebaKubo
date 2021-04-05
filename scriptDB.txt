@@ -3,13 +3,14 @@ CREATE TABLE peliculas (
   titulo varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   descripcion varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
  duracion int(11) NOT NULL,
-  estren` timestamp,
+  estreno date,
+  calificacion int(3),
   categorias varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
   trailer` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) 
 
 ALTER TABLE peliculas ADD PRIMARY KEY (id);
 ALTER TABLE peliculas MODIFY id int(11) NOT NULL AUTO_INCREMENT;
 
-INSERT INTO `peliculas` (`id`, `titulo`, `descripcion`, `duracion`, `estreno`, `categorias`, `trailer`) VALUES ('1', 'Superman', 'Pelicula de superman', '120', '2020-04-01 05:00:00', 'accion', 'Q26q7Rs5edM');
+INSERT INTO `peliculas` (`id`, `titulo`, `descripcion`, `duracion`, `estreno`, `categorias`, `trailer`) VALUES ('1', 'Superman', 'Pelicula de superman', '120', '2020-04-01', 'accion', 'Q26q7Rs5edM');
