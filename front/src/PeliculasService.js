@@ -26,6 +26,28 @@ class PeliculasService {
         });
     }
 
+    //Obtener estrenos
+    static getEstrenos(){
+        return new Promise(async (resolve, rej)=>{
+            try{
+                const res = await axios.get('http://localhost:5000/estrenos');
+                const data = res.data;
+                
+                resolve(
+                    
+                    data.map(estrenos=> ({
+                        ...estrenos,
+                        createdAt: new Date(estrenos.createdAt)
+                    }))
+                );
+
+            }
+            catch(err){
+                rej(err);
+            }
+        });
+    }
+
     //Crear pelicula
     static crearPelicula(data){
         return axios.post(url,{

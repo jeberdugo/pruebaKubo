@@ -1,5 +1,10 @@
 <template>
   <div id="app-prin">
+<nav class="navbar navbar-dark bg-dark ">
+  <a class="navbar-brand">Plataforma de películas</a>
+  
+ 
+</nav>
     <PeliculasList />
   </div>
 </template>
