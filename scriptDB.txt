@@ -13,4 +13,4 @@ CREATE TABLE peliculas (
 ALTER TABLE peliculas ADD PRIMARY KEY (id);
 ALTER TABLE peliculas MODIFY id int(11) NOT NULL AUTO_INCREMENT;
 
-INSERT INTO `peliculas` (`id`, `titulo`, `descripcion`, `duracion`, `estreno`, `categorias`, `trailer`) VALUES ('1', 'Superman', 'Pelicula de superman', '120', '2020-04-01', 'accion', 'Q26q7Rs5edM');
+INSERT INTO `peliculas` (`id`, `titulo`, `descripcion`, `duracion`, `estreno`, `categorias`, `trailer`) VALUES ( 'Superman', 'Pelicula de superman', '120', '2020-04-01', 'accion', 'Q26q7Rs5edM');
